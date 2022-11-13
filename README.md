@@ -116,4 +116,6 @@ A screenshot of professor Hays's approach can be seen below.
 
 Performance: 3 matches (135 steps, 0.1ms)
 
+Replacement string: `$firstname $lastinit - ${decadeprefix}0s - $state\n`
+
 ![assignment 2 solution with named groups](img/assignment2solution.jpg)
