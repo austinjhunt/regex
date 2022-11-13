@@ -69,7 +69,7 @@ It also gives performance characteristics... for example mine takes 166 (down fr
 
 Techniques for optimizing regex: https://www.loggly.com/blog/five-invaluable-techniques-to-improve-regex-performance/
 
-Specific over general.
+OVERALL GOAL WITH REGEX OPTIMIZATION: MINIMIZE BACKTRACKING.
 
 165 steps and 0.1ms (1/10th the time)!!! Using atomic groups for the last two octets (backtracking disallowed).
 https://www.regular-expressions.info/toolong.html
