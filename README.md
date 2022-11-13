@@ -33,3 +33,46 @@ Convenient place to test is: [https://regex101.com/](https://regex101.com/)
 It also gives performance characteristics... for example mine takes 166 (down from 222!) steps. Can you do better?
 
 ![166 steps](img/steps.png)
+
+## Approach
+
+200 Steps:
+([abc]\d{2}\.\d{1,2}[ajz]\.((80)|([0-7]?\d))\.((80)|([0-7]?\d)))$
+
+176 steps:
+^([abc]\d{2}+\.\d{1,2}+[ajz]\.(?:80|[0-7]?\d)\.(:?80|[0-7]?\d))$
+
+171 steps:
+^([abc]\d{2}+\.\d{1,2}+[ajz]\.(?:80|[0-7]?\d)\.(?:80|[0-7]?\d))$
+
+171 steps:
+^([abc]\d{2}+\.\d{1,2}+[ajz]\.(?:80|[0-7]\d|\d)\.(?:80|[0-7]\d|\d))$
+
+173 steps, reversing order of "rare" 80 and "common" 0-79
+^([abc]\d{2}+\.\d{1,2}+[ajz]\.(?:[0-7]?\d|80)\.(?:[0-7]?\d|80))$
+
+182 steps (by using {2} for last octet pattern instead of repeating. didn't help)
+^([abc]\d{2}+\.\d{1,2}+[ajz](?:.80|.[0-7]?\d){2}+)$
+
+196 steps (by "factoring out" the \. rather than repeating it. didn't help.)
+
+^([abc]\d{2}+\.\d{1,2}+[ajz](<?:.(?:[0-7]?\d|80)>){2}+)$
+
+178 steps (by reversing order of 80 and 0-79):
+^([abc]\d{2}+\.\d{1,2}+[ajz](?:.[0-7]?\d|.80){2}+)$
+
+194 steps:
+^([abc]\d{2}+\.\d{1,2}+[ajz](<?:.(?:80|[0-7]?\d)>){2})$
+
+195 steps:
+^([abc]\d{2}+\.\d{1,2}+[ajz](?:.80|.[0-7]\d|.\d){2})$
+
+Techniques for optimizing regex: https://www.loggly.com/blog/five-invaluable-techniques-to-improve-regex-performance/
+
+Specific over general.
+
+165 steps and 0.1ms (1/10th the time)!!! Using atomic groups for the last two octets (backtracking disallowed).
+https://www.regular-expressions.info/toolong.html
+^(?>[abc]\d{2}\.\d{1,2}[ajz]\.(?>80|[0-7]?\d)\.(?>80|[0-7]?\d))$
+
+![165 steps, 0.1 ms](img/165-steps.jpg)
