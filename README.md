@@ -1,6 +1,4 @@
-## Regex Optimization
-
-### Assignment Description
+### Assignment 1 Description: Regex Writing/Optimization (60 pts)
 
 Regular Expressions can be written in a myriad of ways. Some are very fast, some are exceptionally slow. This matters a lot when processing a huge amount of log/machine data. Your task: Try to write a regex to parse the data described below in as performant a way as possible.
 
@@ -81,10 +79,31 @@ Techniques for optimizing regex: https://www.loggly.com/blog/five-invaluable-tec
 
 OVERALL GOAL WITH REGEX OPTIMIZATION: MINIMIZE BACKTRACKING.
 
-## Aha!
+#### Aha!
 
 165 steps and 0.1ms (1/10th the time)!!! Using atomic groups for the last two octets (backtracking disallowed).
 https://www.regular-expressions.info/toolong.html
 ^(?>[abc]\d{2}\.\d{1,2}[ajz]\.(?>80|[0-7]?\d)\.(?>80|[0-7]?\d))$
 
 ![165 steps, 0.1 ms](img/165-steps.jpg)
+
+### Assignment 2 Description: Regex (60 pts)
+
+Imagine we have data in the format of:
+
+```
+Alice Smith - Jan-1-1985 - Dallas, TX
+Bob Vance - Dec-3-1961 - Erie, PA
+Charlie Kelly - Mar-22-1978 - Philadelphia, PA
+```
+
+Using a tool like sed or regex101.com, try to remove some specific information (imagine needing to consume data but to anonymize some of it):
+
+```
+Alice S - 1980s - TX
+Bob V - 1960s - PA
+Charlie K - 1970s - PA
+```
+
+A screenshot of professor Hays's approach can be seen below.
+![assignment 2 demonstration](img/assignment2.png)
