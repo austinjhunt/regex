@@ -107,3 +107,13 @@ Charlie K - 1970s - PA
 
 A screenshot of professor Hays's approach can be seen below.
 ![assignment 2 demonstration](img/assignment2.png)
+
+#### Solution
+
+```
+^(?<firstname>[^\s]+) (?<lastinit>[A-Z]).*-(?<decadeprefix>\d{3}).*(?<state>[A-Z]{2})$
+```
+
+Performance: 3 matches (135 steps, 0.1ms)
+
+![assignment 2 solution with named groups](img/assignment2solution.jpg)
