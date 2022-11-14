@@ -83,7 +83,8 @@ OVERALL GOAL WITH REGEX OPTIMIZATION: MINIMIZE BACKTRACKING.
 
 165 steps and 0.1ms (1/10th the time)!!! Using atomic groups for the last two octets (backtracking disallowed).
 https://www.regular-expressions.info/toolong.html
-^(?>[abc]\d{2}\.\d{1,2}[ajz]\.(?>80|[0-7]?\d)\.(?>80|[0-7]?\d))$
+
+`^(?>[abc]\d{2}\.\d{1,2}[ajz]\.(?>80|[0-7]?\d)\.(?>80|[0-7]?\d))$`
 
 ![165 steps, 0.1 ms](img/165-steps.jpg)
 
